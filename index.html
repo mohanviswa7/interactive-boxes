@@ -2,13 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interactive Boxes</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOGO Offer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <h2>YAY! It's BOGO</h2>
 
-  <div class="container" id="boxContainer"></div>
+    <form id="offer-form">
+      <!-- 1 Unit -->
+      <label class="offer-box">
+        <input type="radio" name="unit" value="1" />
+        <div class="offer-content">
+          <div class="left">
+            <strong>1 Unit</strong>
+            <span class="tag">10% Off</span>
+            <div class="subtext">Standard Price</div>
+          </div>
+          <div class="right">
+            <div class="price">$10.00 USD</div>
+            <div class="striked">$24.00 USD</div>
+          </div>
+        </div>
+      </label>
+
+    
+      <label class="offer-box popular selected">
+        <input type="radio" name="unit" value="2" checked />
+        <div class="ribbon">MOST POPULAR</div>
+        <div class="offer-content">
+          <div class="left">
+            <strong>2 Unit</strong>
+            <span class="tag">20% Off</span>
+            <div class="options">
+              <div>
+                <label>#1</label>
+                <select><option>S</option><option>M</option><option>L</option></select>
+                <select><option>Black</option><option>Red</option></select>
+              </div>
+              <div>
+                <label>#2</label>
+                <select><option>S</option><option>M</option><option>L</option></select>
+                <select><option>Colour</option><option>Black</option></select>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="price">$18.00 USD</div>
+            <div class="striked">$24.00 USD</div>
+          </div>
+        </div>
+      </label>
+
+      
+      <label class="offer-box">
+        <input type="radio" name="unit" value="3" />
+        <div class="offer-content">
+          <div class="left">
+            <strong>3 Unit</strong>
+            <span class="tag">30% Off</span>
+          </div>
+          <div class="right">
+            <div class="price">$24.00 USD</div>
+            <div class="striked">$24.00 USD</div>
+          </div>
+        </div>
+      </label>
+
+     
+      <div class="footer">
+        <div class="delivery">Free Delivery</div>
+        <div class="total">Total: <span id="total-price">$18.00 USD</span></div>
+      </div>
+
+      <button type="submit" class="btn">+ Add to Cart</button>
+      <div class="powered">Powered by Pumper</div>
+    </form>
+  </div>
 
   <script src="script.js"></script>
 </body>
