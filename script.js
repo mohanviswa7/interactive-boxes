@@ -1,54 +1,23 @@
-const boxData = [
-  {
-    title: "Top Box",
-    colors: ["Red", "Green", "Blue"],
-    sizes: ["Small", "Medium", "Large"],
-  },
-  {
-    title: "Middle Box",
-    colors: ["Black", "White", "Yellow"],
-    sizes: ["XS", "S", "XL"],
-  },
-  {
-    title: "Bottom Box",
-    colors: ["Purple", "Orange", "Gray"],
-    sizes: ["28", "30", "32"],
-  },
-];
+const radios = document.querySelectorAll('input[type="radio"][name="unit"]');
+const totalDisplay = document.getElementById("total-price");
 
-const container = document.getElementById("boxContainer");
+const priceMap = {
+  1: "$10.00 USD",
+  2: "$18.00 USD",
+  3: "$24.00 USD",
+};
 
-boxData.forEach((box, index) => {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.dataset.index = index;
+radios.forEach(radio => {
+  radio.addEventListener("change", () => {
+    const selected = document.querySelector('input[name="unit"]:checked');
+    if (selected) {
+      totalDisplay.textContent = priceMap[selected.value];
 
-  card.innerHTML = `
-    <div class="card-header">${box.title}</div>
-    <div class="card-body">
-      <label>
-        Color:
-        <select>
-          ${box.colors.map(color => `<option>${color}</option>`).join("")}
-        </select>
-      </label>
-      <label>
-        Size:
-        <select>
-          ${box.sizes.map(size => `<option>${size}</option>`).join("")}
-        </select>
-      </label>
-    </div>
-  `;
-
-  container.appendChild(card);
-});
-
-// Expand/collapse logic
-container.addEventListener("click", e => {
-  const card = e.target.closest(".card");
-  if (!card) return;
-
-  document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
-  card.classList.add("active");
+      // Highlight selected offer box
+      document.querySelectorAll(".offer-box").forEach(box => {
+        box.classList.remove("selected");
+      });
+      selected.closest(".offer-box").classList.add("selected");
+    }
+  });
 });
